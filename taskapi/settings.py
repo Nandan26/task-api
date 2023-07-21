@@ -72,7 +72,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'taskapi.wsgi.application'
 
-APPEND_SLASH=False
+APPEND_SLASH = True
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
