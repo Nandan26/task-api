@@ -8,10 +8,12 @@ from rest_framework.views import APIView
 from .custom_response import CustomResponse
 
 
-# Create your views here.
+
 
 class TaskReadorCreate(APIView):
-
+    '''
+    Handling single/multiple objects
+    '''
     def get(self, request, *args, **kwargs):
         task_objects = Task.objects.all()
         serializer = TaskSerializer(task_objects, many = True)
@@ -34,14 +36,15 @@ class TaskReadorCreate(APIView):
     
     def delete(self, request, *args, **kwargs):
         for data in request.data:
-            # print(data.keys())
             task = Task.objects.filter(id=data['id'])
             task.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 class TaskModification(APIView):
-    
+    '''
+    For Perticular object mentioned in url
+    '''
     def get(self, request, pk):
 
         try:

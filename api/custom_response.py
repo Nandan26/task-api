@@ -3,7 +3,7 @@ from rest_framework.serializers import Serializer
 
 class CustomResponse(Response):
     def __init__(self, data=None, **kwargs):
-        # Check if data is a list (POST request) and exclude unnecessary fields
+        # Check if data is a list
         if isinstance(data, list):
             if kwargs.get('all_data') == True:
                 data = list(data)
